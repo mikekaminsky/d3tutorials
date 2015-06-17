@@ -62,7 +62,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", function(error, data) {
+d3.csv("data.csv", function(error, data) {
 
   data.forEach(function(d) {
     d.frequency = +d.frequency;
@@ -73,7 +73,6 @@ d3.tsv("data.tsv", function(error, data) {
 
   svg.append("g")
       .attr("class", "y axis")
-      <!--.attr("transform", "translate(" + -width + margin.height + ",0)")-->
       .call(yAxis);
 
   svg.append("g")
