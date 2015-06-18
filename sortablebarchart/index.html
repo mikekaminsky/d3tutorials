@@ -62,11 +62,27 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+
+var color = d3.scale.ordinal()
+    .range(["#001c9c","#101b4d","#475003","#9c8305","#d3c47c"]);
+
 d3.csv("data.csv", function(error, data) {
 
-  data.forEach(function(d) {
-    d.frequency = +d.frequency;
+  var labelVar = 'letter';
+  var varNames = d3.keys(data[0])
+      .filter(function (key) { return key !== labelVar;});
+
+
+  color.domain(varNames);
+  var seriesData = varNames.map(function (name) {
+    return {
+      name: name,
+      values: data.map(function (d) {
+        return {name: name, label: d[labelVar], value: +d[name]};
+      })
+    };
   });
+  console.log("seriesData", seriesData);
 
   y.domain(data.map(function(d) { return d.letter; }));
   x.domain([0, d3.max(data, function(d) { return d.frequency; })]);
