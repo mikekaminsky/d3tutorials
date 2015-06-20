@@ -23,14 +23,16 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>Frequency:</strong> <span style='color:steelblue'>" + d.frequency + "</span>";
+    return "<strong>This Group:</strong> <span style='color:steelblue'>" + 
+      d3.format('.1%')(d.frequency) + "</span>";
   });
 
 var tipb = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequencyb + "</span>";
+    return "<strong>That Group:</strong> <span style='color:red'>" + 
+      d3.format('.1%')(d.frequencyb) + "</span>";
   });
 
 var svg = d3.select("body").append("svg")
