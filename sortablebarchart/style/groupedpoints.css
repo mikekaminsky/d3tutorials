@@ -15,8 +15,13 @@ body {
   shape-rendering: crispEdges;
 }
 
-.bar1 {
+.circle1 {
   fill: steelblue;
+  fill-opacity: .9;
+}
+
+.circle2 {
+  fill: red;
   fill-opacity: .9;
 }
 

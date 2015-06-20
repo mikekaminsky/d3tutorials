@@ -71,20 +71,20 @@ d3.csv("data.csv", function(error, data) {
       .attr("y", height + 32)
       .text("Frequency");
 
-  svg.selectAll(".bar1")
+  svg.selectAll(".circle1")
       .data(data)
     .enter().append("circle")
-      .attr("class", "bar1")
+      .attr("class", "circle1")
       .attr("r", 3.5)
       .attr("cy", function(d) { return y(d.letter); })
       .attr("cx", function(d) { return x(d.frequency); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide);
 
-  svg.selectAll(".bar2")
+  svg.selectAll(".circle2")
       .data(data)
     .enter().append("circle")
-      .attr("class", "bar2")
+      .attr("class", "circle2")
       .attr("r", 3.5)
       .attr("cy", function(d) { return y(d.letter); })
       .attr("cx", function(d) { return x(d.frequencyb); })
@@ -110,20 +110,20 @@ d3.csv("data.csv", function(error, data) {
         .map(function(d) { return d.letter; }))
         .copy();
 
-    svg.selectAll(".bar1")
+    svg.selectAll(".circle1")
         .sort(function(a, b) { return y0(a.letter) - y0(b.letter); });
 
-    svg.selectAll(".bar2")
+    svg.selectAll(".circle2")
         .sort(function(a, b) { return y0(a.letter) - y0(b.letter); });
 
     var transition = svg.transition().duration(750),
         delay = function(d, i) { return i * 50; };
 
-    transition.selectAll(".bar1")
+    transition.selectAll(".circle1")
         .delay(delay)
         .attr("cy", function(d) { return y0(d.letter); });
 
-    transition.selectAll(".bar2")
+    transition.selectAll(".circle2")
         .delay(delay)
         .attr("cy", function(d) { return y0(d.letter); });
 
